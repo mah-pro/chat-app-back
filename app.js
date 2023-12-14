@@ -1,7 +1,6 @@
 // Importation des modules nécessaires
 const express = require("express");
 const cors = require("cors");
-
 // Initialisation d'une application Express
 const app = express();
 
