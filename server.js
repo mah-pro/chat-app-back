@@ -1,12 +1,14 @@
 // Importation des modules nécessaires
 require("dotenv").config();  // Permet de charger les variables d'environnement depuis un fichier .env
 const cors = require('cors');  // Gestion des requêtes CORS
+const bodyParser = require('body-parser');
 
 const mongoose = require("mongoose");  // ODM (Object Document Mapper) pour MongoDB
 const express = require("express");  // Framework pour construire des applications web
 const http = require("http");  // Module pour créer un serveur HTTP
 const socketIo = require("socket.io");  // Bibliothèque pour la communication en temps réel
 const jwt = require("jwt-then");  // Bibliothèque pour gérer les tokens JWT
+const ag=require("./routes/user")
 
 // Connexion à la base de données MongoDB
 mongoose.connect(process.env.DATABASE, {
@@ -31,7 +33,8 @@ require("./models/Message");
 const app = express();
 
 app.use(cors());  // Utilisation de CORS pour gérer les requêtes cross-origin
-
+app.use("/",ag);
+app.use(bodyParser.json({ type: 'application/*+json' }));
 // Configuration du serveur HTTP et de Socket.IO
 const server = http.createServer(app);
 const io = socketIo(server, {
