@@ -1,12 +1,13 @@
 // Importation des modules nécessaires
 const mongoose = require("mongoose");
-const User = mongoose.model("User");
+const User = require("../models/User");
 const sha256 = require("js-sha256");
 const jwt = require("jwt-then");
 
 // Fonction d'inscription
 exports.register = async (req, res) => {
 try {
+    console.log(req.body);
 // Extraction des données du corps de la requête
 const { name, email, password } = req.body;
 
@@ -45,7 +46,7 @@ await user.save();
 
 // Réponse JSON en cas de succès
 res.json({
-    message: `User [${name}] registered successfully!`,
+    message: `User [${name}] registered successfully!`, user
 });
 } catch (error) {
 // Réponse JSON en cas d'erreur avec le statut 400 (Bad Request)
