@@ -5,10 +5,11 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema(
 {
 // Champ "name" de type String, requis (required) avec un message d'erreur personnalisé
-name: {
-type: String,
-required: "Name is required!",
-},
+name: 
+    {
+        type: String,
+        required: "Name is required!",
+    },
 // Champ "email" de type String, requis (required) avec un message d'erreur personnalisé
 email: {
 type: String,
